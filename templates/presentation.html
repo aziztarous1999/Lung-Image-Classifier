@@ -1,0 +1,302 @@
+<!--
+=========================================================
+* Soft UI Design System - v1.0.9
+=========================================================
+
+* Product Page:  https://www.creative-tim.com/product/soft-ui-design-system 
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./static/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./static/img/favicon.png">
+  <title>
+    Lung Image Classifier
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="./static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="./static/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="./static/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="./static/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="presentation-page">
+  <!-- Navbar -->
+
+  <header class="header-2">
+    <div class="page-header min-vh-75 relative" style="background-image: url('./static/img/curved-images/mainlungs.png')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5">Lung Image Classifier</h1>
+            <p class="lead text-white mt-3">utilizes cutting-edge technology to swiftly categorize chest X-ray images into 'COVID', 'NORMAL', and 'PNEUMONIA'.<br/> This efficient tool aids in rapid diagnosis, facilitating timely medical interventions and enhancing healthcare decision-making. </p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute w-100 z-index-1 bottom-0">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="moving-waves">
+            <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+            <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+            <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+            <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+          <div class="row">
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"><span id="state1" countTo="90.54">0</span>%</h1>
+                <h5 class="mt-3">Custom Model</h5>
+                <p class="text-sm">A custom Convolutional Neural Network (CNN) with three convolutional layers for image classification.</p>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"> <span id="state2" countTo="93">0</span>%</h1>
+                <h5 class="mt-3">Dense Model</h5>
+                <p class="text-sm">
+                  A Dense Neural Network (DNN) with three convolutional layers and max pooling for image classification.</p>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"> <span id="state3" countTo="92">0</span>%</h1>
+                <h5 class="mt-3">GoogleNet Model</h5>
+                <p class="text-sm">Inception-based GoogLeNet model for image classification with efficient multi-level feature extraction.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- -------- START Features w/ icons and text on left & gradient title and text on right -------- -->
+  <div class="container py-4 position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="text-gradient text-primary mb-0 mt-2">About</h3>
+        <h3>Training Process</h3>
+        <p> Including the GoogLeNet model alongside the Custom CNN and Dense Neural Network (DNN), the training process involves diverse architectures. The labeled chest X-ray dataset for 'COVID', 'NORMAL' and 'PNEUMONIA' is input into each model. With specialized convolutional or dense layers, the models discern intricate patterns. The training optimizes parameters using categorical crossentropy loss and the Adam optimizer. Gradually, the models fine-tune their weights, improving their accuracy in classifying respiratory conditions in unseen X-ray images.</p>
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row mt-4">
+              <div class="col-md-6">
+                <select class="btn bg-gradient-primary" id="modelSelect">
+                  <option value="Custom_model">Custom Model</option>
+                  <option value="Dense_model">Dense Model</option>
+                  <option value="Googlenet_model">Googlenet Model</option>
+              </select>
+              </div>
+              <div class="col-md-6 mt-md-0 mt-5">
+                <button  id="trainButton" onclick="trainModel()" type="button" class="btn bg-gradient-primary w-auto me-2">Train Now</button>
+              </div>
+              </div>
+              </div>
+        </div>
+        </div>
+        
+
+        
+
+
+      </div>
+      <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0">
+        <div class="p-3 info-horizontal">
+          <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+            <i class="fas fa-hourglass opacity-10"></i>
+          </div>
+          <div class="description ps-3">
+            <p class="mb-0">Enables early identification of respiratory conditions, improving intervention timing and enhancing overall patient outcomes.</p>
+          </div>
+        </div>
+  
+        <div class="p-3 info-horizontal">
+          <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+            <i class="fas fa-crosshairs opacity-10"></i>
+          </div>
+          <div class="description ps-3">
+            <p class="mb-0">Rapid and accurate classifications support quick healthcare assessments, aiding timely treatment and resource allocation.</p>
+          </div>
+        </div>
+        <div class="p-3 info-horizontal">
+          <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+            <i class="fas fa-robot opacity-10"></i>
+          </div>
+          <div class="description ps-3">
+            <p class="mb-0">Automated image analysis streamlines diagnostics, optimizing healthcare resources and allowing focus on critical tasks for practitioners.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="loadingSpinner"></div>
+      <div id="errorMessagestrain"></div>
+    </div>
+  </div>
+  
+  <!-- -------- END Features w/ icons and text on left & gradient title and text on right -------- -->
+  
+    
+
+<div class="container py-4 position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+    <!-- -------- START HEADER 1 w/ text and image on right ------- -->
+<header>
+  <div class="page-header min-vh-80">
+    <div class="oblique position-absolute top-0 h-100 d-md-block d-none">
+      <div id="imagePreview" class="oblique-image position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-size: 100% 100%;background-image:url(./static/img/curved-images/sicknessDetection.jpg)"></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
+          <h1 class="text-gradient text-primary">Try out our </h1>
+          <h1 class="mb-4">Prediction System</h1>
+          <p class="lead pe-5 me-5">To utilize the system, begin by selecting an X-ray image through the "Choose an X-ray" option. Next, choose the preferred model for prediction, followed by clicking the "Predict" button. The system swiftly processes the image, providing detailed predictions for COVID, NORMAL, and PNEUMONIA, aiding in efficient and accurate respiratory condition identification.</p>
+
+
+        <div class="container" style="padding-right: calc(var(--bs-gutter-x) * 1.5) !important;">
+          
+        <div class="row mt-4">
+            <label class="btn bg-gradient-primary" for="imageInput">1. Choose an image</label>
+            <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
+        </div>
+
+        <div class="row ">
+          <select class="btn bg-gradient-primary" id="modelSelect2">
+              <option value="Custom_model">2. Custom Model</option>
+              <option value="Dense_model">2. Dense Model</option>
+              <option value="Googlenet_model">2. Googlenet Model</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <button  id="predictButton" onclick="predict()" type="button" class="btn bg-gradient-primary">3. Predict</button>
+        </div>
+
+        <div class="row">
+          <div id="predictions" style="display: none;" class="alert alert-dark text-white font-weight-bold" role="alert"></div>
+          <div id="loadingSpinner"></div>
+          <div id="errorMessagesPredict"></div>
+        </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- -------- END HEADER 1 w/ text and image on right ------- -->
+
+  
+</div>
+
+
+
+
+
+
+  
+
+  <footer class="footer pt-5 mt-5">
+    <hr class="horizontal dark mb-5">
+    <div class="container">
+      <div class=" row">
+
+        <div class="col-12">
+          <div class="text-center">
+            <p class="my-4 text-sm">
+              All rights reserved. Copyright © <script>
+                document.write(new Date().getFullYear())
+              </script> Created by <span class="text-bold">Aziz Tarous / Youssef Chaker / Nadhir Kebaier / Achref Samoud</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--   Core JS Files   -->
+  <script src="./static/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="./static/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="./static/js/plugins/perfect-scrollbar.min.js"></script>
+  <!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
+  <script src="./static/js/plugins/countup.min.js"></script>
+  <!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
+  <script src="./static/js/plugins/rellax.min.js"></script>
+  <!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
+  <script src="./static/js/plugins/tilt.min.js"></script>
+  <!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
+  <script src="./static/js/plugins/choices.min.js"></script>
+  <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
+  <script src="./static/js/plugins/parallax.min.js"></script>
+  <!-- Control Center for Soft UI Kit: parallax effects, scripts for the example pages etc -->
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+  <script src="./static/js/soft-design-system.min.js?v=1.0.9" type="text/javascript"></script>
+  <script type="text/javascript">
+    if (document.getElementById('state1')) {
+      const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+      if (!countUp.error) {
+        countUp.start();
+      } else {
+        console.error(countUp.error);
+      }
+    }
+    if (document.getElementById('state2')) {
+      const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+      if (!countUp1.error) {
+        countUp1.start();
+      } else {
+        console.error(countUp1.error);
+      }
+    }
+    if (document.getElementById('state3')) {
+      const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+      if (!countUp2.error) {
+        countUp2.start();
+      } else {
+        console.error(countUp2.error);
+      };
+    }
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
